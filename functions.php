@@ -14,16 +14,28 @@
 		
 		$row = 0;
 		
+		// tühi massiiv kus hoiame objekte edaspidi
+		$array = array();
 		
 		
 		while($stmt->fetch()){
-			echo $row." ".$number_plate."<br>";
-			$row = $row + 1;
+			
+			// loon objekti
+			$car = new StdClass();
+			$car->id = $id;
+			$car->number_plate = $number_plate;
+			
+			array_push($array, $car);
+			// echo "<pre>";
+			// var_dump($array);
+			// echo "</pre>";
 			
 		}
 		
 		$stmt->close();
 		$mysqli->close();
+		
+		return $array;
 		
 				
 		
